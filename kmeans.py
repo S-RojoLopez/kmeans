@@ -36,4 +36,11 @@ if __name__ == "__main__":
         nrow = {}
         for key, value in row.items():
             if key == "Genre":
-                nrow[key] =
+                nrow[key] = value
+            else:
+                nrow[key] = float(value)
+        dataset.append(nrow)
+    kmeans(3, dataset, ["Annual_Income_(k$)", "Sepnding_Score"])
+
+
+#
