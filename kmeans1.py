@@ -37,19 +37,19 @@ def kmeans(k, D, attributes):
     print(clusters)
     # 	4.	actualiza el centro de cada clúster, en base a la nueva
     # 			composición del clúster
-        new_centroids = []
-        for i in range(k):
-            if len(clusters[i]) == 0:
-                continue
-            centroid = {}
-            for obj_index in clusters[i]:
-                obj = D[obj_index]
-                for attr in attributes:
-                    centroid[attr] = centroid.get(attr, 0) + obj[attr]
+    new_centroids = []
+    for i in range(k):
+        if len(clusters[i]) == 0:
+            continue
+        centroid = {}
+        for obj_index in clusters[i]:
+            obj = D[obj_index]
             for attr in attributes:
-                centroid[attr] /= len(clusters[i])
-            new_centroids.append(centroid)
-        print(new_centroids)
+                centroid[attr] = centroid.get(attr, 0) + obj[attr]
+        for attr in attributes:
+            centroid[attr] /= len(clusters[i])
+        new_centroids.append(centroid)
+    print(new_centroids)
 
 # 	5. HASTA que se cumpla criterio de terminación
 # return centroids
@@ -65,4 +65,4 @@ if __name__ == "__main__":
             else:
                 nrow[key] = float(value)
         dataset.append(nrow)
-    print(kmeans(3, dataset, ["Annual_Income_(k$)", "Spending_Score"]))
+    kmeans(3, dataset, ["Annual_Income_(k$)", "Sepnding_Score"])
